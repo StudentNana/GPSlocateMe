@@ -14,6 +14,7 @@
 		396163B81DFDDEAA00152E28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396163B61DFDDEAA00152E28 /* LaunchScreen.storyboard */; };
 		396163C31DFDDEAA00152E28 /* aufgabe7Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396163C21DFDDEAA00152E28 /* aufgabe7Tests.swift */; };
 		396163CE1DFDDEAA00152E28 /* aufgabe7UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396163CD1DFDDEAA00152E28 /* aufgabe7UITests.swift */; };
+		39ED7DE01E1DAB5500807024 /* FriedrichKrause.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 39ED7DDF1E1DAB5500807024 /* FriedrichKrause.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		396163C91DFDDEAA00152E28 /* aufgabe7UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aufgabe7UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		396163CD1DFDDEAA00152E28 /* aufgabe7UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aufgabe7UITests.swift; sourceTree = "<group>"; };
 		396163CF1DFDDEAA00152E28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39ED7DDF1E1DAB5500807024 /* FriedrichKrause.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FriedrichKrause.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		396163AC1DFDDEAA00152E28 /* aufgabe7 */ = {
 			isa = PBXGroup;
 			children = (
+				39ED7DDF1E1DAB5500807024 /* FriedrichKrause.gpx */,
 				396163AD1DFDDEAA00152E28 /* AppDelegate.swift */,
 				396163AF1DFDDEAA00152E28 /* ViewController.swift */,
 				396163B11DFDDEAA00152E28 /* Main.storyboard */,
@@ -235,6 +238,7 @@
 				396163B81DFDDEAA00152E28 /* LaunchScreen.storyboard in Resources */,
 				396163B51DFDDEAA00152E28 /* Assets.xcassets in Resources */,
 				396163B31DFDDEAA00152E28 /* Main.storyboard in Resources */,
+				39ED7DE01E1DAB5500807024 /* FriedrichKrause.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +509,7 @@
 				396163D41DFDDEAA00152E28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		396163D51DFDDEAA00152E28 /* Build configuration list for PBXNativeTarget "aufgabe7Tests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +518,7 @@
 				396163D71DFDDEAA00152E28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		396163D81DFDDEAA00152E28 /* Build configuration list for PBXNativeTarget "aufgabe7UITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +527,7 @@
 				396163DA1DFDDEAA00152E28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
