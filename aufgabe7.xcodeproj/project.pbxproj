@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		390F688D1E1FDE4A00F2AC48 /* BerlinBus100.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 390F688C1E1FDE4A00F2AC48 /* BerlinBus100.gpx */; };
 		396163AE1DFDDEAA00152E28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396163AD1DFDDEAA00152E28 /* AppDelegate.swift */; };
 		396163B01DFDDEAA00152E28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396163AF1DFDDEAA00152E28 /* ViewController.swift */; };
 		396163B31DFDDEAA00152E28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396163B11DFDDEAA00152E28 /* Main.storyboard */; };
@@ -14,6 +15,8 @@
 		396163B81DFDDEAA00152E28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396163B61DFDDEAA00152E28 /* LaunchScreen.storyboard */; };
 		396163C31DFDDEAA00152E28 /* aufgabe7Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396163C21DFDDEAA00152E28 /* aufgabe7Tests.swift */; };
 		396163CE1DFDDEAA00152E28 /* aufgabe7UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396163CD1DFDDEAA00152E28 /* aufgabe7UITests.swift */; };
+		39C783FD1E2040D60044ED25 /* Berlin100V1.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 39C783FC1E2040D60044ED25 /* Berlin100V1.gpx */; };
+		39C784011E2049F20044ED25 /* notification1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 39C784001E2049F20044ED25 /* notification1.wav */; };
 		39ED7DE01E1DAB5500807024 /* FriedrichKrause.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 39ED7DDF1E1DAB5500807024 /* FriedrichKrause.gpx */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		390F688C1E1FDE4A00F2AC48 /* BerlinBus100.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BerlinBus100.gpx; sourceTree = "<group>"; };
 		396163AA1DFDDEAA00152E28 /* aufgabe7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aufgabe7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		396163AD1DFDDEAA00152E28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		396163AF1DFDDEAA00152E28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +52,8 @@
 		396163C91DFDDEAA00152E28 /* aufgabe7UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aufgabe7UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		396163CD1DFDDEAA00152E28 /* aufgabe7UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aufgabe7UITests.swift; sourceTree = "<group>"; };
 		396163CF1DFDDEAA00152E28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		39C783FC1E2040D60044ED25 /* Berlin100V1.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Berlin100V1.gpx; sourceTree = "<group>"; };
+		39C784001E2049F20044ED25 /* notification1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = notification1.wav; sourceTree = "<group>"; };
 		39ED7DDF1E1DAB5500807024 /* FriedrichKrause.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FriedrichKrause.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,12 +106,15 @@
 			isa = PBXGroup;
 			children = (
 				39ED7DDF1E1DAB5500807024 /* FriedrichKrause.gpx */,
+				390F688C1E1FDE4A00F2AC48 /* BerlinBus100.gpx */,
+				39C783FC1E2040D60044ED25 /* Berlin100V1.gpx */,
 				396163AD1DFDDEAA00152E28 /* AppDelegate.swift */,
 				396163AF1DFDDEAA00152E28 /* ViewController.swift */,
 				396163B11DFDDEAA00152E28 /* Main.storyboard */,
 				396163B41DFDDEAA00152E28 /* Assets.xcassets */,
 				396163B61DFDDEAA00152E28 /* LaunchScreen.storyboard */,
 				396163B91DFDDEAA00152E28 /* Info.plist */,
+				39C784001E2049F20044ED25 /* notification1.wav */,
 			);
 			path = aufgabe7;
 			sourceTree = "<group>";
@@ -238,6 +247,9 @@
 				396163B81DFDDEAA00152E28 /* LaunchScreen.storyboard in Resources */,
 				396163B51DFDDEAA00152E28 /* Assets.xcassets in Resources */,
 				396163B31DFDDEAA00152E28 /* Main.storyboard in Resources */,
+				39C784011E2049F20044ED25 /* notification1.wav in Resources */,
+				390F688D1E1FDE4A00F2AC48 /* BerlinBus100.gpx in Resources */,
+				39C783FD1E2040D60044ED25 /* Berlin100V1.gpx in Resources */,
 				39ED7DE01E1DAB5500807024 /* FriedrichKrause.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

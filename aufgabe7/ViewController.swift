@@ -9,28 +9,45 @@
 import UIKit
 import CoreLocation
 import MapKit
+import AVFoundation
+
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        assert(red >= 0 && red <= 255, "Invalid red component")
+        assert(green >= 0 && green <= 255, "Invalid green component")
+        assert(blue >= 0 && blue <= 255, "Invalid blue component")
+        
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+    
+    convenience init(netHex:Int) {
+        self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
+    }
+}
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet var msg: UILabel!
     var messages: [Message] = [
-        Message(coordinate: CLLocationCoordinate2D(latitude: 52.53856, longitude: 13.3515), message: "Kaufe Zeitung"),
-        Message(coordinate: CLLocationCoordinate2D(latitude: 52.53753, longitude: 13.35972), message: "Sudoku für die Frau"),
-        Message(coordinate: CLLocationCoordinate2D(latitude: 52.538, longitude: 13.35788), message: "Futter für die Katze"),
-        Message(coordinate: CLLocationCoordinate2D(latitude: 52.53844, longitude: 13.35633), message: "Brief verschicken"),
-        Message(coordinate: CLLocationCoordinate2D(latitude: 52.53895, longitude: 13.35392), message: "Brot kaufen"),
-        Message(coordinate: CLLocationCoordinate2D(latitude: 52.53813, longitude: 13.34925), message: "Kaffee trinken"),
-        Message(coordinate: CLLocationCoordinate2D(latitude: 52.53794, longitude: 13.34667), message: "Blumen für die Frau kaufen"),
-        Message(coordinate: CLLocationCoordinate2D(latitude: 52.53815, longitude: 13.34504), message: "Enten futtern"),
-        Message(coordinate: CLLocationCoordinate2D(latitude: 52.5369, longitude: 13.35938), message: "Pfandflaschen vorbeibringen"),
-        Message(coordinate: CLLocationCoordinate2D(latitude: 52.53619, longitude: 13.35792), message: "Gemüse kaufen"),
-        Message(coordinate: CLLocationCoordinate2D(latitude: 52.53468, longitude: 13.35508), message: "im Park sich ausruhen"),
-        Message(coordinate: CLLocationCoordinate2D(latitude: 52.53398, longitude: 13.35367), message: "Bushaltestelle!!!")]
+        Message(coordinate: CLLocationCoordinate2D(latitude: 52.506016, longitude: 13.332060), message: "Bushaltestelle!!!"),
+        Message(coordinate: CLLocationCoordinate2D(latitude: 52.505235, longitude: 13.333229), message: "Sudoku für die Frau"),
+        Message(coordinate: CLLocationCoordinate2D(latitude: 52.504979, longitude: 13.335596), message: "Futter für die Katze"),
+        Message(coordinate: CLLocationCoordinate2D(latitude: 52.504851, longitude: 13.337183), message: "Brief verschicken"),
+        Message(coordinate: CLLocationCoordinate2D(latitude: 52.504947, longitude: 13.338505), message: "Brot kaufen"),
+        Message(coordinate: CLLocationCoordinate2D(latitude: 52.505110, longitude: 13.339754), message: "Kaffee trinken"),
+        Message(coordinate: CLLocationCoordinate2D(latitude: 52.504950, longitude: 13.340956), message: "Blumen für die Frau kaufen"),
+        Message(coordinate: CLLocationCoordinate2D(latitude: 52.503018, longitude: 13.349299), message: "Enten futtern"),
+        Message(coordinate: CLLocationCoordinate2D(latitude: 52.503459, longitude: 13.350481), message: "Pfandflaschen vorbeibringen"),
+        Message(coordinate: CLLocationCoordinate2D(latitude: 52.505434, longitude: 13.352186), message: "Gemüse kaufen"),
+        Message(coordinate: CLLocationCoordinate2D(latitude: 52.507450, longitude: 13.351687), message: "im Park sich ausruhen"),
+        Message(coordinate: CLLocationCoordinate2D(latitude: 52.509430, longitude: 13.351313), message: "Kaufe Zeitung")]
     var precision: Double = 0.00001
     var locationManager = CLLocationManager()
-    var isInitialized = false
-    
+    var audioNotification = AVAudioPlayer()
+    var color2 = UIColor(netHex:0x00d1ff)
+    var color1 = UIColor(netHex: 0xd6ffff)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,33 +69,40 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-            let userLoction: CLLocation = locations[0]
-            let latitude = userLoction.coordinate.latitude
-            let longitude = userLoction.coordinate.longitude
-            let latDelta: CLLocationDegrees = 0.05
-            let lonDelta: CLLocationDegrees = 0.05
+            let userLocation: CLLocation = locations[0]
+            let latitude = userLocation.coordinate.latitude
+            let longitude = userLocation.coordinate.longitude
+            let latDelta: CLLocationDegrees = 0.005
+            let lonDelta: CLLocationDegrees = 0.005
             let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
             let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
             let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
             self.mapView.setRegion(region, animated: true)
             self.mapView.showsUserLocation = true
-            let userLocation:CLLocation = locations[0] as CLLocation
             var found: Bool = false
-            print(" lat \(userLocation.coordinate.latitude)")
-            print("long \(userLocation.coordinate.longitude)")
+            print(" latitude \(latitude)")
+            print(" longitude \(longitude)")
+            do {
+                audioNotification = try AVAudioPlayer(contentsOf: URL.init(fileURLWithPath: Bundle.main.path(forResource: "notification1", ofType: "wav")!))
+                audioNotification.prepareToPlay()
+            }
+            catch {
+                print("error")
+            }
         
             for message in messages{
-                if (abs(message.coordinate.latitude - userLocation.coordinate.latitude) <= precision &&
-                    abs(message.coordinate.longitude - userLocation.coordinate.longitude) <= precision) {
+                if (abs(message.coordinate.latitude - latitude) <= precision &&
+                    abs(message.coordinate.longitude - longitude) <= precision) {
                         print("yes! You are here")
                         msg.text = message.message
-                        msg.backgroundColor = UIColor.red
+                        msg.backgroundColor = color2
+                        audioNotification.play()
                         found = true
                         break
                 }
             }
             if (!found){
-                msg.backgroundColor = UIColor.gray
+                msg.backgroundColor = color1
                 msg.text = "Nichts zu erledigen"
             }
     }
@@ -91,9 +115,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.message = message
         }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
+    
+    
 }
 
