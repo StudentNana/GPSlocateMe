@@ -29,6 +29,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         Message(coordinate: CLLocationCoordinate2D(latitude: 52.53398, longitude: 13.35367), message: "Bushaltestelle!!!")]
     var precision: Double = 0.00001
     var locationManager = CLLocationManager()
+    var isInitialized = false
     
     
     override func viewDidLoad() {
@@ -50,27 +51,36 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation:CLLocation = locations[0] as CLLocation
-        var found: Bool = false
-        print(" lat \(userLocation.coordinate.latitude)")
-        print("long \(userLocation.coordinate.longitude)")
         
-        for message in messages{
-            if (abs(message.coordinate.latitude - userLocation.coordinate.latitude) <= precision &&
-                abs(message.coordinate.longitude - userLocation.coordinate.longitude) <= precision) {
-                print("yes! You are here")
-                msg.text = message.message
-                msg.backgroundColor = UIColor.red
-                found = true
-                break
+            let userLoction: CLLocation = locations[0]
+            let latitude = userLoction.coordinate.latitude
+            let longitude = userLoction.coordinate.longitude
+            let latDelta: CLLocationDegrees = 0.05
+            let lonDelta: CLLocationDegrees = 0.05
+            let span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
+            let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+            let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+            self.mapView.setRegion(region, animated: true)
+            self.mapView.showsUserLocation = true
+            let userLocation:CLLocation = locations[0] as CLLocation
+            var found: Bool = false
+            print(" lat \(userLocation.coordinate.latitude)")
+            print("long \(userLocation.coordinate.longitude)")
+        
+            for message in messages{
+                if (abs(message.coordinate.latitude - userLocation.coordinate.latitude) <= precision &&
+                    abs(message.coordinate.longitude - userLocation.coordinate.longitude) <= precision) {
+                        print("yes! You are here")
+                        msg.text = message.message
+                        msg.backgroundColor = UIColor.red
+                        found = true
+                        break
+                }
             }
-        }
-        if (!found){
-            msg.backgroundColor = UIColor.gray
-            msg.text = "Nichts zu erledigen"
-        }
-        
-        
+            if (!found){
+                msg.backgroundColor = UIColor.gray
+                msg.text = "Nichts zu erledigen"
+            }
     }
     
     class Message{
